@@ -1,26 +1,39 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mariacaya</title>
+    <title>Mariacaya on Mariacaya</title>
     <link>https://maricaya.github.io/</link>
-    <description>Recent content on Mariacaya</description>
+    <description>Recent content in Mariacaya on Mariacaya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
     <lastBuildDate>Sat, 14 Dec 2019 18:55:11 +0800</lastBuildDate>
-    
-	<atom:link href="https://maricaya.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>使用Hugo创建个人博客</title>
-      <link>https://maricaya.github.io/posts/build-a-personal-blog-with-hugo/</link>
+      <title>Posts</title>
+      <link>https://maricaya.github.io/posts/</link>
       <pubDate>Sat, 14 Dec 2019 18:55:11 +0800</pubDate>
       
-      <guid>https://maricaya.github.io/posts/build-a-personal-blog-with-hugo/</guid>
-      <description>使用Hugo搭建个人博客 一、下载Hugo Mac  Mac下直接使用Homebrew安装即可(需要命令行科学上网)  brew install hugo  如果没有配置科学上网,可以去Hugo releases下载 查看是否安装成功  hugo version # 输出版本即为下载成功 Windows  下载  去Hugo releases下载   解压  后将hugo.exe放入你喜欢的目录中，比如D:\Software\hugo   配置环境变量  将hugo.exe所在文件夹添加到PATH。即D:\Software\hugo    安装时的问题 运行Hugo,powershell自动关闭  排查发现是电脑管家自动阻止了Hugo命令的运行,重启电脑就好啦   二、创建一个 new Site 在任意一个目录下创建即可
-官方推荐 hugo new site quickstart 使用github pages搭建 将new site名称改为xxx.github.io-creater，xxx 是你的github名称。注意将大写字母改为小写。 比如：Maricaya.github.io改为maricaya.github.io
-hugo new site xxx.github.io-creater 三、添加一个主题 可以在themes.gohugo.io中找到你喜欢的主题,我使用了Ananke theme
-# 切换目录 cd xxx.github.io-creater # 初始化 git init git submodule add https://github.</description>
+      <guid>https://maricaya.github.io/posts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>About Hugo</title>
+      <link>https://maricaya.github.io/about/</link>
+      <pubDate>Mon, 09 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://maricaya.github.io/about/</guid>
+      <description>&lt;p&gt;Hugo is the &lt;strong&gt;world’s fastest framework for building websites&lt;/strong&gt;. It is written in Go.&lt;/p&gt;
+&lt;p&gt;It makes use of a variety of open source projects including:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/russross/blackfriday&#34;&gt;https://github.com/russross/blackfriday&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/alecthomas/chroma&#34;&gt;https://github.com/alecthomas/chroma&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/muesli/smartcrop&#34;&gt;https://github.com/muesli/smartcrop&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/cobra&#34;&gt;https://github.com/spf13/cobra&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/spf13/viper&#34;&gt;https://github.com/spf13/viper&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Learn more and contribute on &lt;a href=&#34;https://github.com/gohugoio&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

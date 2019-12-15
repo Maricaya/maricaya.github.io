@@ -1,28 +1,60 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
-  <url>
-    <loc>https://maricaya.github.io/</loc>
-    <lastmod>2019-12-14T18:55:11+08:00</lastmod>
-  </url>
+    <url>
+      <loc>https://maricaya.github.io/</loc>
+      
+      <lastmod>2019-12-14T18:55:11+08:00</lastmod>
+      
+      
+      
+      
+    </url>
   
-  <url>
-    <loc>https://maricaya.github.io/posts/</loc>
-    <lastmod>2019-12-14T18:55:11+08:00</lastmod>
-  </url>
+    <url>
+      <loc>https://maricaya.github.io/posts/</loc>
+      
+      <lastmod>2019-12-14T18:55:11+08:00</lastmod>
+      
+      
+      
+      
+    </url>
   
-  <url>
-    <loc>https://maricaya.github.io/posts/build-a-personal-blog-with-hugo/</loc>
-    <lastmod>2019-12-14T18:55:11+08:00</lastmod>
-  </url>
+    <url>
+      <loc>https://maricaya.github.io/2019/build-a-personal-blog-with-hugo/</loc>
+      
+      <lastmod>2019-12-14T18:55:11+08:00</lastmod>
+      
+      
+      
+      
+    </url>
   
-  <url>
-    <loc>https://maricaya.github.io/categories/</loc>
-  </url>
+    <url>
+      <loc>https://maricaya.github.io/about/</loc>
+      
+      <lastmod>2019-12-09T00:00:00+00:00</lastmod>
+      
+      
+      
+      
+    </url>
   
-  <url>
-    <loc>https://maricaya.github.io/tags/</loc>
-  </url>
+    <url>
+      <loc>https://maricaya.github.io/categories/</loc>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://maricaya.github.io/tags/</loc>
+      
+      
+      
+      
+    </url>
   
 </urlset>
