@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="cxl">
+  
+  
+  
+  
+  <link rel="next" href="https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/" />
+  <link rel="canonical" href="https://maricaya.github.io/2019/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           使用Hugo创建个人博客 | Mariacaya
+       
+  </title>
+  <meta name="title" content="使用Hugo创建个人博客 | Mariacaya">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/maricaya.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "使用Hugo创建个人博客",
+    "headline" : "使用Hugo创建个人博客",
+    "description" : "使用Hugo搭建个人博客 一、下载Hugo Mac  Mac下直接使用Homebrew安装即可(需要命令行科学上网)  brew install hugo\r 如果没有配置科学上网,可以去Hugo releases下载 查看是否安装成功  hugo version\r# 输出版本即为下载成功\r\x26laquo;\x26laquo;\x26laquo;\x26lt; HEAD\n=======\n       b03c68d7b7da703e6be3ecec7597cf7fd726682a\n       Windows  下载  去Hugo releases下载   解压  后将hugo.exe放入你喜欢的目录中，比如D:\\Software\\hugo   配置环境变量  将hugo.exe所在文件夹添加到PATH。即D:\\Software\\hugo    安装时的问题 运行Hugo,powershell自动关闭  排查发现是电脑管家自动阻止了Hugo命令的运行,重启电脑就好啦   二、创建一个 new Site 在任意一个目录下创建即可\n官方推荐 hugo new site quickstart\r使用github pages搭建 将new site名称改为xxx.",
+    "inLanguage" : "zh-Hans",
+    "author" : "cxl",
+    "creator" : "cxl",
+    "publisher": "cxl",
+    "accountablePerson" : "cxl",
+    "copyrightHolder" : "cxl",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-12-14 18:55:11 \x2b0800 CST",
+    "dateModified" : "2019-12-14 18:55:11 \x2b0800 CST",
+    "url" : "https:\/\/maricaya.github.io\/2019\/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/",
+    "wordCount" : "153",
+    "keywords" : [  "Mariacaya"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://maricaya.github.io/">Mariacaya</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/about/" title="About Hugo">About Hugo</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://maricaya.github.io/">Mariacaya</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/about/" title="About Hugo">About Hugo</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">使用Hugo创建个人博客</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://maricaya.github.io/" rel="author">cxl</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-12-14 itemprop="datePublished">December 14, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <h1 id="hugo">使用Hugo搭建个人博客</h1>
+<h2 id="hugo-1">一、下载Hugo</h2>
+<h3 id="mac">Mac</h3>
+<ul>
+<li>Mac下直接使用Homebrew安装即可(需要命令行科学上网)</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
+</code></pre></div><ul>
+<li>如果没有配置科学上网,可以去<a href="https://github.com/gohugoio/hugo/releases">Hugo releases</a>下载</li>
+<li>查看是否安装成功</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo version
+<span style="color:#75715e"># 输出版本即为下载成功</span>
+</code></pre></div><p>&laquo;&laquo;&laquo;&lt; HEAD</p>
+<p>=======</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>b03c68d7b7da703e6be3ecec7597cf7fd726682a</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<h3 id="windows">Windows</h3>
+<ul>
+<li>下载
+<ul>
+<li>去<a href="https://github.com/gohugoio/hugo/releases">Hugo releases</a>下载</li>
+</ul>
+</li>
+<li>解压
+<ul>
+<li>后将hugo.exe放入你喜欢的目录中，比如<code>D:\Software\hugo</code></li>
+</ul>
+</li>
+<li>配置环境变量
+<ul>
+<li>将hugo.exe所在文件夹添加到PATH。即<code>D:\Software\hugo</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="heading">安装时的问题</h3>
+<h4 id="hugopowershell">运行Hugo,<code>powershell</code>自动关闭</h4>
+<ul>
+<li>排查发现是电脑管家自动阻止了<code>Hugo</code>命令的运行,重启电脑就好啦</li>
+</ul>
+<h3 id="heading-1"></h3>
+<h2 id="-new-site">二、创建一个 new Site</h2>
+<p>在任意一个目录下创建即可</p>
+<h3 id="heading-2">官方推荐</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site quickstart
+</code></pre></div><h3 id="github-pages">使用github pages搭建</h3>
+<p>将new site名称改为xxx.github.io-creater，xxx 是你的github名称。注意<strong>将大写字母改为小写</strong>。
+比如：Maricaya.github.io改为maricaya.github.io</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site xxx.github.io-creater
+</code></pre></div><h2 id="heading-3">三、添加一个主题</h2>
+<p>可以在<a href="https://themes.gohugo.io/">themes.gohugo.io</a>中找到你喜欢的主题,我使用了<a href="https://themes.gohugo.io/gohugo-theme-ananke/">Ananke theme</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 切换目录</span>
+cd xxx.github.io-creater
+<span style="color:#75715e"># 初始化</span>
+git init
+
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke
+
+<span style="color:#75715e"># 在 config.toml中添加配置theme = &#34;ananke&#34;</span>
+echo <span style="color:#e6db74">&#39;theme = &#34;ananke&#34;&#39;</span> &gt;&gt; config.toml
+</code></pre></div><h2 id="heading-4">四、开始写第一篇博客吧</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new posts/我的第一篇博客.md
+<span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#f92672">&lt;&lt;&lt;</span>&lt; HEAD
+hugo new posts/我的第一篇博客.md
+<span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; b03c68d7b7da703e6be3ecec7597cf7fd726682a
+</code></pre></div><p>打开<code>xxx.github.io-creater</code> 文件夹，<code>content/posts/我的第一篇博客.md</code> 就是第一篇博客的位置。
+这是文章的初始化内容:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-md" data-lang="md">---
+title: &#34;我的第一篇博客&#34;
+date: 2019-12-14T18:55:11+08:00
+draft: true
+---
+</code></pre></div><p><strong>draft草稿状态，博客完成后，修改为false</strong></p>
+<h2 id="hugo-2">五、启动Hugo服务器</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo server -D
+</code></pre></div><p>打开http://localhost:1313 , 这就是你的博客啦</p>
+<h2 id="heading-5">六、将博客改为中文</h2>
+<p>找到<code>config.toml</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">baseURL <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;http://example.org/&#34;</span>
+<span style="color:#75715e"># baseURL修改为`https://maricaya.github.io/`</span>
+languageCode <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;en-us&#34;</span>
+<span style="color:#75715e"># languageCode=&#34;zh-Hans&#34; 修改为中文简体</span>
+title <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;My New Hugo Site&#34;</span>
+theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ananke&#34;</span>
+</code></pre></div><h2 id="heading-6">七、建立静态页面</h2>
+<p>这一步很简单，新开一个shell窗口，运行</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo -D
+</code></pre></div><p>创建了新的目录<code>public</code></p>
+<h2 id="github-pages-1">八、将博客搭建到Github Pages上</h2>
+<ul>
+<li>新建<code>.gitignore</code>，写入<code>/public/</code>，在git仓库中不上传public文件夹。<code>public</code>需要自成一个仓库</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd public 
+
+git init
+
+git add .
+git commit -m <span style="color:#e6db74">&#34;第一次部署&#34;</span>
+</code></pre></div><ul>
+<li>在github中新建一个仓库，仓库名称为<code>xxx.github.io</code>。
+<ul>
+<li>注意：xxx为你的github用户名，如果有大写字母必须改为小写。</li>
+<li>比如：我的用户名为Maricaya，仓库名为<code>maricaya.github.io</code></li>
+<li>上传代码即可</li>
+<li>打开https:xx.github.io，即可查看你的博客啦</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>cxl </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://maricaya.github.io/2019/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/>https://maricaya.github.io/2019/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://maricaya.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+         
+        
+        <a href="https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/" class="next" rel="next" title="java包管理的前生今世--Maven入门">java包管理的前生今世--Maven入门&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://maricaya.github.io/">cxl</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
