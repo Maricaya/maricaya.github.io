@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="cxl">
+  
+  
+  
+  <link rel="prev" href="https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/" />
+  
+  <link rel="canonical" href="https://maricaya.github.io/2019/arraylist%E6%89%A9%E5%AE%B9/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           ArrayList的扩容机制(jdk8) | Mariacaya
+       
+  </title>
+  <meta name="title" content="ArrayList的扩容机制(jdk8) | Mariacaya">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/maricaya.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "ArrayList的扩容机制(jdk8)",
+    "headline" : "ArrayList的扩容机制(jdk8)",
+    "description" : "想了解ArrayList的动态扩容机制，最好的方式是阅读源码。\nArrayList的构造方法 - 有初始容量 初始容量 \x26gt; 0时，elementData初始化为initialCapacity大小的数组。\n\/**\r* 构造具有指定初始容量的空列表 list。\r*\r* @param initialCapacity list的初始容量\r* @throws IllegalArgumentException 如果初始容量为负\r*\/\rpublic ArrayList(int initialCapacity) {\rif (initialCapacity \x26gt; 0) {\rthis.elementData = new Object[initialCapacity];\r} else if (initialCapacity == 0) {\rthis.elementData = EMPTY_ELEMENTDATA;\r} else {\rthrow new IllegalArgumentException(\x26#34;Illegal Capacity: \x26#34;\x2b initialCapacity);\r}\r}\r}\rArrayList的扩容机制 - add()内部实现 add方法 \/**\r* 将 指定元素 加入list末尾\r* @param e 将被加入list的元素\r* @return \x26lt;tt\x26gt;true\x26lt;\/tt\x26gt; (as specified by {@link Collection#add})\r*\/\rpublic boolean add(E e) {\r\/\/ 确保有足够的空间\r \/\/ 在添加元素前进行判断，如果空间不够就扩容\r ensureCapacityInternal(size \x2b 1); \/\/ Increments modCount!",
+    "inLanguage" : "zh-Hans",
+    "author" : "cxl",
+    "creator" : "cxl",
+    "publisher": "cxl",
+    "accountablePerson" : "cxl",
+    "copyrightHolder" : "cxl",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-12-16 17:00:30 \x2b0800 CST",
+    "dateModified" : "2019-12-16 17:00:30 \x2b0800 CST",
+    "url" : "https:\/\/maricaya.github.io\/2019\/arraylist%E6%89%A9%E5%AE%B9\/",
+    "wordCount" : "459",
+    "keywords" : [  "Mariacaya"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://maricaya.github.io/">Mariacaya</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/about/" title="About Hugo">About Hugo</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://maricaya.github.io/">Mariacaya</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/about/" title="About Hugo">About Hugo</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">ArrayList的扩容机制(jdk8)</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://maricaya.github.io/" rel="author">cxl</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-12-16 itemprop="datePublished">December 16, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>想了解ArrayList的动态扩容机制，最好的方式是阅读源码。</p>
+<h2 id="arraylist---">ArrayList的构造方法 - 有初始容量</h2>
+<p>初始容量 &gt; 0时，elementData初始化为initialCapacity大小的数组。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">  * 构造具有指定初始容量的空列表 list。
+</span><span style="color:#75715e">  *
+</span><span style="color:#75715e">  * @param  initialCapacity  list的初始容量
+</span><span style="color:#75715e">  * @throws IllegalArgumentException 如果初始容量为负
+</span><span style="color:#75715e">  */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#a6e22e">ArrayList</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> initialCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>initialCapacity <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elementData</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object<span style="color:#f92672">[</span>initialCapacity<span style="color:#f92672">]</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>initialCapacity <span style="color:#f92672">=</span><span style="color:#f92672">=</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">elementData</span> <span style="color:#f92672">=</span> EMPTY_ELEMENTDATA<span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> IllegalArgumentException<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Illegal Capacity: &#34;</span><span style="color:#f92672">+</span> initialCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="arraylist---add">ArrayList的扩容机制 - add()内部实现</h2>
+<h3 id="add">add方法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
+</span><span style="color:#75715e">  * 将 指定元素 加入list末尾
+</span><span style="color:#75715e">  * @param e  将被加入list的元素
+</span><span style="color:#75715e">  * @return &lt;tt&gt;true&lt;/tt&gt; (as specified by {@link Collection#add})
+</span><span style="color:#75715e">  */</span>
+<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>E e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 确保有足够的空间
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 在添加元素前进行判断，如果空间不够就扩容
+</span><span style="color:#75715e"></span>  ensureCapacityInternal<span style="color:#f92672">(</span>size <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>  <span style="color:#75715e">// Increments modCount!! 增加模式计数
+</span><span style="color:#75715e"></span>  elementData<span style="color:#f92672">[</span>size<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> e<span style="color:#f92672">;</span>
+  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="ensurecapacityinternal">ensureCapacityInternal方法</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ensureCapacityInternal</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 保证有足够的容量     // 计算容量
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ensureExplicitCapacity</span><span style="color:#f92672">(</span>calculateCapacity<span style="color:#f92672">(</span>elementData<span style="color:#f92672">,</span> minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+<span style="color:#75715e">// 计算容量方法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">calculateCapacity</span><span style="color:#f92672">(</span>Object<span style="color:#f92672">[</span><span style="color:#f92672">]</span> elementData<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 这里就是判断elementData（初始数组）是不是为空数组
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 如果是，容量取 默认容量（10）和 size+1(第一次调用add传入的minCapacity) 的最大值
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// 如果不是，取 size+1
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>elementData <span style="color:#f92672">=</span><span style="color:#f92672">=</span> DEFAULTCAPACITY_EMPTY_ELEMENTDATA<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>DEFAULT_CAPACITY<span style="color:#f92672">,</span> minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#66d9ef">return</span> minCapacity<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="ensureexplicitcapacity">ensureExplicitCapacity方法</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ensureExplicitCapacity</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  modCount<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">;</span>
+  <span style="color:#75715e">// 溢出
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>minCapacity <span style="color:#f92672">-</span> elementData<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    grow<span style="color:#f92672">(</span>minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="grow---">grow方法 - 扩容的主要方式</h2>
+<p>grow 中的主要操作是,新建了一个新数组，容量扩大为1.5倍，然后将原来的数组都拷贝进去。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"> <span style="color:#75715e">/**
+</span><span style="color:#75715e">  * 增加容量，至少保证能够容纳 minCapacity 指定的最小容量
+</span><span style="color:#75715e">  *
+</span><span style="color:#75715e">  * @param minCapacity 需要的最小容量
+</span><span style="color:#75715e">  */</span>
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">grow</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// overflow-conscious code
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 旧数组的容量
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> oldCapacity <span style="color:#f92672">=</span> elementData<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+    <span style="color:#75715e">// 为新数组的容量 （旧容量的1.5倍）
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> newCapacity <span style="color:#f92672">=</span> oldCapacity <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>oldCapacity <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+     <span style="color:#75715e">// 1.5倍容量 &lt; 需要的最小容量； newCapacity = 最小容量
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> minCapacity <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> newCapacity <span style="color:#f92672">=</span> minCapacity<span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// 1.5倍容量 &gt; 数组最大长度，使用hugeCapacity比较二者
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> MAX_ARRAY_SIZE <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> newCapacity <span style="color:#f92672">=</span> hugeCapacity<span style="color:#f92672">(</span>minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+    <span style="color:#75715e">// minCapacity is usually close to size, so this is a win:
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 将原数组中的元素拷贝进新数组
+</span><span style="color:#75715e"></span>    elementData <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">copyOf</span><span style="color:#f92672">(</span>elementData<span style="color:#f92672">,</span> newCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="hugecapacity">hugeCapacity方法</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">hugeCapacity</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// overflow 溢出，报错
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>minCapacity <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> 
+    <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> OutOfMemoryError<span style="color:#f92672">(</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#75715e">// 比较 minCapacity MAX_ARRAY_SIZE， 将最大的那个作为新数组大小
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#f92672">(</span>minCapacity <span style="color:#f92672">&gt;</span> MAX_ARRAY_SIZE<span style="color:#f92672">)</span> <span style="color:#f92672">?</span> Integer<span style="color:#f92672">.</span><span style="color:#a6e22e">MAX_VALUE</span> <span style="color:#f92672">:</span> MAX_ARRAY_SIZE<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="-add1">完整走一遍 空数组add(1)为例</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ArrayList<span style="color:#f92672">&lt;</span><span style="color:#f92672">&gt;</span><span style="color:#f92672">(</span>0<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+a<span style="color:#f92672">.</span><span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+</code></pre></div><ol>
+<li>add(1) 将第一个元素1添加到list中，调用 <code>ensureCapacityInternal(0+1);</code></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">add</span><span style="color:#f92672">(</span>E e<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  ensureCapacityInternal<span style="color:#f92672">(</span>size <span style="color:#f92672">+</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#75715e">// ensureCapacityInternal(0 + 1)
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// xxx
+</span><span style="color:#75715e"></span><span style="color:#f92672">}</span>
+</code></pre></div><ol start="2">
+<li><code>ensureCapacityInternal(0+1)</code>
+先执行<code>calculateCapacity([], 0+1)</code>
+再执行<code>ensureExplicitCapacity(10)</code></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ensureCapacityInternal</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// 
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ensureExplicitCapacity</span><span style="color:#f92672">(</span>calculateCapacity<span style="color:#f92672">(</span>elementData<span style="color:#f92672">,</span> minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">calculateCapacity</span><span style="color:#f92672">(</span>Object<span style="color:#f92672">[</span><span style="color:#f92672">]</span> elementData<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>elementData <span style="color:#f92672">=</span><span style="color:#f92672">=</span> DEFAULTCAPACITY_EMPTY_ELEMENTDATA<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 是空数组
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// Math.max(10, 0+1) ： 10
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">max</span><span style="color:#f92672">(</span>DEFAULT_CAPACITY<span style="color:#f92672">,</span> minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+  <span style="color:#66d9ef">return</span> minCapacity<span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+
+<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ensureExplicitCapacity</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  modCount<span style="color:#f92672">+</span><span style="color:#f92672">+</span><span style="color:#f92672">;</span>
+  <span style="color:#75715e">// 溢出
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>minCapacity <span style="color:#f92672">-</span> elementData<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    <span style="color:#75715e">// 10 - 0 &gt; 0 执行grow(10)
+</span><span style="color:#75715e"></span>    grow<span style="color:#f92672">(</span>minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><ol start="3">
+<li><code>grow(10)</code></li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">grow</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> minCapacity<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+  <span style="color:#75715e">// oldCapacity: 0
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> oldCapacity <span style="color:#f92672">=</span> elementData<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;</span>
+  <span style="color:#75715e">// newCapacity: 0
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> newCapacity <span style="color:#f92672">=</span> oldCapacity <span style="color:#f92672">+</span> <span style="color:#f92672">(</span>oldCapacity <span style="color:#f92672">&gt;</span><span style="color:#f92672">&gt;</span> 1<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+  <span style="color:#75715e">// 0 - 10 &lt; 0 : newCapacity = 10
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> minCapacity <span style="color:#f92672">&lt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> newCapacity <span style="color:#f92672">=</span> minCapacity<span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+  <span style="color:#75715e">// 10 - (Integer.MAX_VALUE - 8) &lt; 0 不执行
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>newCapacity <span style="color:#f92672">-</span> MAX_ARRAY_SIZE <span style="color:#f92672">&gt;</span> 0<span style="color:#f92672">)</span> <span style="color:#f92672">{</span> newCapacity <span style="color:#f92672">=</span> hugeCapacity<span style="color:#f92672">(</span>minCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span> <span style="color:#f92672">}</span>
+  <span style="color:#75715e">// 将原数组中的元素拷贝进新数组
+</span><span style="color:#75715e"></span>  elementData <span style="color:#f92672">=</span> Arrays<span style="color:#f92672">.</span><span style="color:#a6e22e">copyOf</span><span style="color:#f92672">(</span>elementData<span style="color:#f92672">,</span> newCapacity<span style="color:#f92672">)</span><span style="color:#f92672">;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div>
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>cxl </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://maricaya.github.io/2019/arraylist%E6%89%A9%E5%AE%B9/>https://maricaya.github.io/2019/arraylist%E6%89%A9%E5%AE%B9/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://maricaya.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/" class="prev" rel="prev" title="java包管理的前生今世--Maven入门"><i class="iconfont icon-left"></i>&nbsp;java包管理的前生今世--Maven入门</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://maricaya.github.io/">cxl</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

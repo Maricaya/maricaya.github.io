@@ -2,9 +2,9 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
-      <loc>https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/</loc>
+      <loc>https://maricaya.github.io/2019/arraylist%E6%89%A9%E5%AE%B9/</loc>
       
-      <lastmod>2019-12-16T18:55:11+08:00</lastmod>
+      <lastmod>2019-12-16T17:00:30+08:00</lastmod>
       
       
       
@@ -14,7 +14,7 @@
     <url>
       <loc>https://maricaya.github.io/</loc>
       
-      <lastmod>2019-12-16T18:55:11+08:00</lastmod>
+      <lastmod>2019-12-16T17:00:30+08:00</lastmod>
       
       
       
@@ -24,7 +24,17 @@
     <url>
       <loc>https://maricaya.github.io/posts/</loc>
       
-      <lastmod>2019-12-16T18:55:11+08:00</lastmod>
+      <lastmod>2019-12-16T17:00:30+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/</loc>
+      
+      <lastmod>2019-12-16T14:55:11+08:00</lastmod>
       
       
       

@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "使用Hugo创建个人博客",
     "headline" : "使用Hugo创建个人博客",
-    "description" : "使用Hugo搭建个人博客 一、下载Hugo Mac  Mac下直接使用Homebrew安装即可(需要命令行科学上网)  brew install hugo\r 如果没有配置科学上网,可以去Hugo releases下载 查看是否安装成功  hugo version\r# 输出版本即为下载成功\r\x26laquo;\x26laquo;\x26laquo;\x26lt; HEAD\n=======\n       b03c68d7b7da703e6be3ecec7597cf7fd726682a\n       Windows  下载  去Hugo releases下载   解压  后将hugo.exe放入你喜欢的目录中，比如D:\\Software\\hugo   配置环境变量  将hugo.exe所在文件夹添加到PATH。即D:\\Software\\hugo    安装时的问题 运行Hugo,powershell自动关闭  排查发现是电脑管家自动阻止了Hugo命令的运行,重启电脑就好啦   二、创建一个 new Site 在任意一个目录下创建即可\n官方推荐 hugo new site quickstart\r使用github pages搭建 将new site名称改为xxx.",
+    "description" : "使用Hugo搭建个人博客 一、下载Hugo Mac  Mac下直接使用Homebrew安装即可(需要命令行科学上网)  brew install hugo\r 如果没有配置科学上网,可以去Hugo releases下载 查看是否安装成功  hugo version\r# 输出版本即为下载成功\rWindows  下载  去Hugo releases下载   解压  后将hugo.exe放入你喜欢的目录中，比如D:\\Software\\hugo   配置环境变量  将hugo.exe所在文件夹添加到PATH。即D:\\Software\\hugo    安装时的问题 运行Hugo,powershell自动关闭  排查发现是电脑管家自动阻止了Hugo命令的运行,重启电脑就好啦   二、创建一个 new Site 在任意一个目录下创建即可\n官方推荐 hugo new site quickstart\r使用github pages搭建 将new site名称改为xxx.github.io-creater，xxx 是你的github名称。注意将大写字母改为小写。 比如：Maricaya.github.io改为maricaya.github.io\nhugo new site xxx.github.io-creater\r三、添加一个主题 可以在themes.gohugo.io中找到你喜欢的主题,我使用了Ananke theme\n# 切换目录\rcd xxx.github.io-creater\r# 初始化\rgit init\rgit submodule add https:\/\/github.",
     "inLanguage" : "zh-Hans",
     "author" : "cxl",
     "creator" : "cxl",
@@ -57,7 +57,7 @@
     "datePublished": "2019-12-14 18:55:11 \x2b0800 CST",
     "dateModified" : "2019-12-14 18:55:11 \x2b0800 CST",
     "url" : "https:\/\/maricaya.github.io\/2019\/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/",
-    "wordCount" : "153",
+    "wordCount" : "141",
     "keywords" : [  "Mariacaya"]
 }
 </script>
@@ -159,24 +159,7 @@
 </ul>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo version
 <span style="color:#75715e"># 输出版本即为下载成功</span>
-</code></pre></div><p>&laquo;&laquo;&laquo;&lt; HEAD</p>
-<p>=======</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>b03c68d7b7da703e6be3ecec7597cf7fd726682a</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<h3 id="windows">Windows</h3>
+</code></pre></div><h3 id="windows">Windows</h3>
 <ul>
 <li>下载
 <ul>
@@ -221,10 +204,6 @@ git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/anan
 echo <span style="color:#e6db74">&#39;theme = &#34;ananke&#34;&#39;</span> &gt;&gt; config.toml
 </code></pre></div><h2 id="heading-4">四、开始写第一篇博客吧</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new posts/我的第一篇博客.md
-<span style="color:#f92672">&lt;&lt;&lt;</span><span style="color:#f92672">&lt;&lt;&lt;</span>&lt; HEAD
-hugo new posts/我的第一篇博客.md
-<span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span><span style="color:#f92672">=</span>
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; b03c68d7b7da703e6be3ecec7597cf7fd726682a
 </code></pre></div><p>打开<code>xxx.github.io-creater</code> 文件夹，<code>content/posts/我的第一篇博客.md</code> 就是第一篇博客的位置。
 这是文章的初始化内容:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-md" data-lang="md">---
