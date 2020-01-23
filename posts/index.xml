@@ -6,10 +6,102 @@
     <description>Recent content in Posts on Mariacaya</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Mon, 16 Dec 2019 17:00:30 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jan 2020 16:40:59 +0800</lastBuildDate>
     
 	<atom:link href="https://maricaya.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>二叉树常见面试题</title>
+      <link>https://maricaya.github.io/2020/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AE%80%E4%BB%8B/</link>
+      <pubDate>Thu, 16 Jan 2020 16:40:59 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AE%80%E4%BB%8B/</guid>
+      <description>扁平结构变成树 请改成树形结构，子节点用children数组表示。 注意，即使打乱数组的顺序，你的程序也能正常工作。
+const array = [{ id: 9, name: &amp;#34;前端基础设施组&amp;#34;, parent: 8 },{ id: 10, name: &amp;#34;前端业务组&amp;#34;, parent: 8 },{ id: 7, name: &amp;#34;后端开发部门&amp;#34;, parent: 5 },{ id: 8, name: &amp;#34;前端开发部门&amp;#34;, parent: 5 },{ id: 1, name: &amp;#34;CEO&amp;#34;, parent: null },{ id: 2, name: &amp;#34;运营部&amp;#34;, parent: 1 },{ id: 3, name: &amp;#34;财务部&amp;#34;, parent: 1 },{ id: 4, name: &amp;#34;人事部&amp;#34;, parent: 1 },{ id: 5, name: &amp;#34;技术部&amp;#34;, parent: 1 },{ id: 6, name: &amp;#34;产品部&amp;#34;, parent: 1 }]解答：</description>
+    </item>
+    
+    <item>
+      <title>Js函数全解</title>
+      <link>https://maricaya.github.io/2020/js%E5%87%BD%E6%95%B0%E5%85%A8%E8%A7%A3/</link>
+      <pubDate>Tue, 14 Jan 2020 17:01:00 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/js%E5%87%BD%E6%95%B0%E5%85%A8%E8%A7%A3/</guid>
+      <description>函数是什么？ 函数三要素：返回值、
+函数返回值由什么决定？  调用时输入的参数params 定义时的环境env  举个🌰 let x = &amp;#39;x&amp;#39;let a = &amp;#39;1&amp;#39;function f1(x){return x + a};a = &amp;#39;3&amp;#39;{let a = &amp;#39;2&amp;#39;alert(f1(&amp;#39;x&amp;#39;)) // 值为多少}a = &amp;#39;4&amp;#39;结果为：a3 说明：a是定义时的a，而不是执行时的a
+另一个🌰
+let x = &amp;#39;x&amp;#39;let a = &amp;#39;1&amp;#39;function f1(c){c()};{let a = &amp;#39;2&amp;#39;function f2(){console.log(x + a)}f1(f2)}结果为：a2 说明：a是定义时的a，而不是执行时的a
+闭包：函数内部能够访问外部的变量 一个常见考题：</description>
+    </item>
+    
+    <item>
+      <title>实现Promise</title>
+      <link>https://maricaya.github.io/2020/%E5%AE%9E%E7%8E%B0promise/</link>
+      <pubDate>Fri, 10 Jan 2020 09:45:20 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/%E5%AE%9E%E7%8E%B0promise/</guid>
+      <description>手写Promise是前端面试中常考的一道题目，本章将和大家一起完成一个符合Promises/A+标准的Promise方法，希望对你有所帮助。
+Promise 简介  解决什么问题  回调地狱   如何解决的 - how 什么优点（对比其他技术）  减少缩进 消灭if(err)   缺点 如何解决这些缺点  Promises/A+标准 https://promisesaplus.com/
+Promise 的完整API是什么 promise是一个类  js中类是特殊的函数 类属性：length（可忽略） 类方法：all/&amp;hellip; 对象属性: then/finally/catch 对象内部属性: state = pending/fulfilled/rejected  实现promise基本方法 promise是一个类，只接受函数fn，并立即执行该函数 class Promise2 {constructor(fn) {if (typeof fn !== &amp;#34;function&amp;#34;) {throw new Error(&amp;#34;只接受函数&amp;#34;)}fn()}}fn执行的时候接受resolve和reject两个函数 class Promise2 {constructor(fn) {if (typeof fn !== &amp;#34;function&amp;#34;) {throw new Error(&amp;#34;只接受函数&amp;#34;)}/*********************************/fn(() =&amp;gt; {}, () =&amp;gt; {})/*********************************/}}Promise有then方法 promise.</description>
+    </item>
+    
+    <item>
+      <title>Css常见面试题</title>
+      <link>https://maricaya.github.io/2020/css%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
+      <pubDate>Fri, 10 Jan 2020 09:19:31 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/css%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
+      <description>css来实现水平垂直居中 移动端页面适配解决方案</description>
+    </item>
+    
+    <item>
+      <title>数组去重和函数柯里化</title>
+      <link>https://maricaya.github.io/2020/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/</link>
+      <pubDate>Fri, 10 Jan 2020 09:18:44 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/</guid>
+      <description>&amp;lt;JavaScript专题之数组去重&amp;gt;[https://juejin.im/post/5949d85f61ff4b006c0de98b]
+/** @params array：表示要去重的数组，必填* @params isSorted：表示函数传入的数组是否已排过序，如果为 true，将会采用更快的方法进行去重* @params iteratee：传入一个函数，可以对每个元素进行重新的计算，然后根据处理的结果进行去重至此，我们已经仿照着 underscore 的思路写了一个 unique 函数*/var array3 = [1, 1, &amp;#39;a&amp;#39;, &amp;#39;A&amp;#39;, 2, 2];// 第二版// iteratee 英文释义：迭代 重复function unique(array, isSorted, iteratee) {var res = [];var seen = [];for (var i = 0, len = array.length; i &amp;lt; len; i++) {var value = array[i];var computed = iteratee ? iteratee(value, i, array) : value;if (isSorted) {if (!</description>
+    </item>
+    
+    <item>
+      <title>EventLoop计时器nextTick</title>
+      <link>https://maricaya.github.io/2020/eventloop%E8%AE%A1%E6%97%B6%E5%99%A8nexttick/</link>
+      <pubDate>Thu, 09 Jan 2020 20:17:00 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/eventloop%E8%AE%A1%E6%97%B6%E5%99%A8nexttick/</guid>
+      <description>node 的event Loop chrome
+timer 执行 setTimeout 和 setInterval 的回调函数 poll 获取新的 I/O 事件。在某些场景下 Node.js 会阻塞在这个阶段。 check 执行 setImmediate() 的回调函数。
+setImmediate 的主要优势就是，如果在 I/O 操作的回调里，setImmediate 的回调总是比setTimeout 的回调先执行。（译者注：怎么总是把一个道理翻来覆去地说） process.nextTick() 当前阶段的后面
+###总结
+ Chrome  宏任务 马上（MarcoTask) 微任务 一会（MicroTask）   Node  setTimeOut timers setImmediate check nextTick 当前后面  primise.then(fn) resolve()时，fn放入当前队列后面执行 async await 转换为then      从一道面试题说 event loop
+(function () {setTimeout(() =&amp;gt; {console.log(0)})new Promise(resolve =&amp;gt; {console.</description>
+    </item>
+    
+    <item>
+      <title>深拷贝</title>
+      <link>https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</link>
+      <pubDate>Thu, 09 Jan 2020 11:00:44 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</guid>
+      <description>深拷贝是面试常考的知识点，也经常容易出错，下面来看看我的答题思路吧。 参考loadsh[https://github.com/lodash/lodash/blob/master/.internal/baseClone.js]
+什么是深拷贝 理解一：
+ 假设b是a的一份拷贝，并且b中没有对a对象的引用。 理解二： b是a的一份拷贝。 把a和b画出图，a与b之间没有连接。  询问 在做任何与算法、需求相关时，都要问这几个问题：
+ 询问数据类型  拷贝的数据中有什么？   询问数据规模  10？ 10w？ 10w个嵌套？   性能要求  对时间、空间、速度要求   运行环境  IE6？Chrome?   其他要求  有没有其他内容？   开始写  开始写 最简单的方法 JSON序列化反序列化 let obj = {a: 1,b: [1, 2, 3],c: {d1: &amp;#39;ddd&amp;#39;, d2: &amp;#39;ccc&amp;#39;}}let obj1 = JSON.parse(JSON.stringify(a))obj1.a = 2console.log(obj.a)这个方法的缺点是什么？</description>
+    </item>
+    
+    <item>
+      <title>多线程问题的来源</title>
+      <link>https://maricaya.github.io/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90/</link>
+      <pubDate>Fri, 03 Jan 2020 10:07:15 +0800</pubDate>
+      
+      <guid>https://maricaya.github.io/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90/</guid>
+      <description>多线程问题是Java面试中常考问题，一定要熟练掌握它。
+相关概念 进程 Process 进程是程序的一次执行过程，系统进行资源分配和调度的基本单位，是操作系统结构的基础，进程是线程的容器。 进程是资源分配的最小单位。我们启动一个服务、运行一个实例，就是开一个服务进程，例如 Java 里的 JVM 本身就是一个进程。
+是线程 线程与进程相似，但线程是一个比进程更小的执行单位。 一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程共享同一块内存空间和一组系统资源，所以系统在产生一个线程，或是在各个线程之间作切换工作时，负担要比进程小得多，也正因为如此，线程也被称为轻量级进程。
+线程和进程的不同  线程是进程划分成的更小的运行单位。线程和进程最大的不同在于基本上各进程是独立的，而各线程则不一定，因为同一进程中的线程极有可能会相互影响。 从另一角度来说，进程属于操作系统的范畴，主要是同一段时间内，可以同时执行一个以上的程序，而线程则是在同一程序内几乎同时执行一个以上的程序段。  什么是多线程？为什么需要多线程？ 多线程？ 多线程就是几乎同时执行多个线程。 （一个CPU在某一个时间点上永远都只能是一个线程！即使这个CPU是多核的，除非有多个CPU才能实现多个线程同时运行。） 几乎同时是因为多个线程是一个线程执行一会然后其他的线程再执行，并不是同时执行。
+为什么需要多线程？  现代CPU执行速度是非常快的 但是Java默认只有一个线程 而且Java的执行模型是同步、阻塞的 当你在进行一个非常耗时的操作时，当前线程执行流会停在这里，等着方法执行完成。 而在实际生产中，如果用户同时请求一个命令，后来的用户就需要等前面的执行完后，才得到结果。 那么，我们能不能多请几个人来处理这些命令，让这些用户可以同时得到结果？ 使用多线程。 还有一点，现代的CPU都是多核的，理论上具有天然的并发能力   Java的执行模型是同步、阻塞的 什么是同步、阻塞？来看这段代码  public static void main(String[] args) throws InterruptedException {a();System.out.println(1);}private static void a() throws InterruptedException {Thread.sleep(100);b();}private static void b() throws InterruptedException {Thread.sleep(1000);}1100s后才会打印出1。 当你在进行一个非常耗时的操作时，当前线程执行流会停在这里，等着方法执行完成。 这个过程称为阻塞（block）。</description>
+    </item>
     
     <item>
       <title>ArrayList的扩容机制(jdk8)</title>

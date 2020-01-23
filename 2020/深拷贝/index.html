@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="cxl">
+  
+  
+  
+  <link rel="prev" href="https://maricaya.github.io/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90/" />
+  <link rel="next" href="https://maricaya.github.io/2020/eventloop%E8%AE%A1%E6%97%B6%E5%99%A8nexttick/" />
+  <link rel="canonical" href="https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           深拷贝 | Mariacaya
+       
+  </title>
+  <meta name="title" content="深拷贝 | Mariacaya">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "https:\/\/maricaya.github.io\/"
+    },
+    "articleSection" : "posts",
+    "name" : "深拷贝",
+    "headline" : "深拷贝",
+    "description" : "深拷贝是面试常考的知识点，也经常容易出错，下面来看看我的答题思路吧。 参考loadsh[https:\/\/github.com\/lodash\/lodash\/blob\/master\/.internal\/baseClone.js]\n什么是深拷贝 理解一：\n 假设b是a的一份拷贝，并且b中没有对a对象的引用。 理解二： b是a的一份拷贝。 把a和b画出图，a与b之间没有连接。  询问 在做任何与算法、需求相关时，都要问这几个问题：\n 询问数据类型  拷贝的数据中有什么？   询问数据规模  10？ 10w？ 10w个嵌套？   性能要求  对时间、空间、速度要求   运行环境  IE6？Chrome?   其他要求  有没有其他内容？   开始写  开始写 最简单的方法 JSON序列化反序列化 let obj = {\ra: 1,\rb: [1, 2, 3],\rc: {d1: \x26#39;ddd\x26#39;, d2: \x26#39;ccc\x26#39;}\r}\rlet obj1 = JSON.parse(JSON.stringify(a))\robj1.a = 2\rconsole.log(obj.a)\r这个方法的缺点是什么？",
+    "inLanguage" : "zh-Hans",
+    "author" : "cxl",
+    "creator" : "cxl",
+    "publisher": "cxl",
+    "accountablePerson" : "cxl",
+    "copyrightHolder" : "cxl",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-01-09 11:00:44 \x2b0800 CST",
+    "dateModified" : "2020-01-09 11:00:44 \x2b0800 CST",
+    "url" : "https:\/\/maricaya.github.io\/2020\/%E6%B7%B1%E6%8B%B7%E8%B4%9D\/",
+    "wordCount" : "539",
+    "keywords" : [  "Mariacaya"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://maricaya.github.io/">Mariacaya</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/about/" title="About Hugo">About Hugo</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="https://maricaya.github.io/">Mariacaya</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/posts/" title="">Blog</a>
+                
+                <a class="menu-item" href="/categories/" title="">Categories</a>
+                
+                <a class="menu-item" href="/tags/" title="">Tags</a>
+                
+                <a class="menu-item" href="/about/" title="">About</a>
+                
+                <a class="menu-item" href="/about/" title="About Hugo">About Hugo</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">深拷贝</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="https://maricaya.github.io/" rel="author">cxl</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-01-09 itemprop="datePublished">January 9, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          <p>深拷贝是面试常考的知识点，也经常容易出错，下面来看看我的答题思路吧。
+参考loadsh[<a href="https://github.com/lodash/lodash/blob/master/.internal/baseClone.js">https://github.com/lodash/lodash/blob/master/.internal/baseClone.js</a>]</p>
+<h2 id="heading">什么是深拷贝</h2>
+<p>理解一：</p>
+<ul>
+<li>假设b是a的一份拷贝，并且b中没有对a对象的引用。
+理解二：</li>
+<li>b是a的一份拷贝。</li>
+<li>把a和b画出图，a与b之间没有连接。</li>
+</ul>
+<h2 id="heading-1">询问</h2>
+<p>在做任何与算法、需求相关时，都要问这几个问题：</p>
+<ul>
+<li>询问数据类型
+<ul>
+<li>拷贝的数据中有什么？</li>
+</ul>
+</li>
+<li>询问数据规模
+<ul>
+<li>10？</li>
+<li>10w？</li>
+<li>10w个嵌套？</li>
+</ul>
+</li>
+<li>性能要求
+<ul>
+<li>对时间、空间、速度要求</li>
+</ul>
+</li>
+<li>运行环境
+<ul>
+<li>IE6？Chrome?</li>
+</ul>
+</li>
+<li>其他要求
+<ul>
+<li>有没有其他内容？</li>
+</ul>
+</li>
+<li>开始写</li>
+</ul>
+<h2 id="heading-2">开始写</h2>
+<h3 id="heading-3">最简单的方法</h3>
+<h5 id="json">JSON序列化反序列化</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">a</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>,
+  <span style="color:#a6e22e">b</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>],
+  <span style="color:#a6e22e">c</span><span style="color:#f92672">:</span> {<span style="color:#a6e22e">d1</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ddd&#39;</span>, <span style="color:#a6e22e">d2</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;ccc&#39;</span>}
+}
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">obj1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">parse</span>(<span style="color:#a6e22e">JSON</span>.<span style="color:#a6e22e">stringify</span>(<span style="color:#a6e22e">a</span>))
+<span style="color:#a6e22e">obj1</span>.<span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+<span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">obj</span>.<span style="color:#a6e22e">a</span>)
+</code></pre></div><p>这个方法的缺点是什么？</p>
+<ul>
+<li>不支持<code>function</code>
+<ul>
+<li>以前有函数报错，现在是直接忽略</li>
+</ul>
+</li>
+<li>不支持<code>undefined</code> (支持<code>null</code>)</li>
+<li>不支持引用.JSON不支持环状结构，只支出树状结构
+<ul>
+<li><code>a.self = a</code> <code>a(#100).self = (#101)</code></li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>
+}
+<span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">self</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>
+</code></pre></div><ul>
+<li>不支持<code>Date</code>,会把 <code>new Date()</code> 变成字符串</li>
+<li>不支持正则表达式</li>
+<li>不支持<code>symbol</code></li>
+</ul>
+<h5 class="  a" id="heading-4"></h5>
+<p>只支持对象扩展，并且只拷贝一层。</p>
+<h3 id="heading-5">如何实现支持以上类型的深拷贝？</h3>
+<p>递归</p>
+<ul>
+<li>看节点类型（7种）</li>
+<li>基本类型，直接拷贝</li>
+<li>object分情况讨论
+<ul>
+<li>普通object - for in</li>
+<li>数组Array - Array初始化</li>
+<li>函数 -  怎么拷贝？闭包？</li>
+<li>日期Date - 怎么拷贝？</li>
+</ul>
+</li>
+</ul>
+<h3 id="heading-6">测试驱动开发</h3>
+<p>使用chai和sinon，先进行项目构建
+可以去我的仓库拷贝代码，删去src/index.js test/index.js中内容</p>
+<h4 id="---">完成浅拷贝 - 基本类型</h4>
+<p>6种基本数据类型 num string boolean undefined null symbol
+不是引用类型，直接返回即可</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeepClone</span> {
+    <span style="color:#a6e22e">clone</span> (<span style="color:#a6e22e">source</span>) {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>
+    }
+}
+</code></pre></div><h4 id="heading-7">完成对象拷贝</h4>
+<p>判断数据是不是对象<code>xxx instanceof Object</code></p>
+<h5 id="heading-8">能够复制普通对象</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;cat&#39;</span>, <span style="color:#a6e22e">child</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;miaomiao&#39;</span> } }
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeepClone</span> {
+  <span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Object) {
+      <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object()
+      <span style="color:#75715e">// 使用for in 遍历对象上所有数据
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">source</span>) {
+        <span style="color:#a6e22e">dist</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>[<span style="color:#a6e22e">key</span>]) 
+      }
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dist</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>
+  }
+}
+
+<span style="color:#a6e22e">module</span>.<span style="color:#a6e22e">exports</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DeepClone</span>
+</code></pre></div><h5 id="heading-9">能够复制数组</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>) {
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Object) {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object()
+    <span style="color:#75715e">/****************************/</span>
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Array) {
+      <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array()
+    }
+    <span style="color:#75715e">/****************************/</span>
+    <span style="color:#75715e">// 使用for in 遍历对象上所有数据
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">source</span>) {
+      <span style="color:#a6e22e">dist</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>[<span style="color:#a6e22e">key</span>]) 
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dist</span>
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>
+}
+</code></pre></div><h5 id="heading-10">能够复制函数</h5>
+<p>既然是函数，那么拷贝时再调用一次即可。调用原函数算深拷贝吗？这里要回到我们对深拷贝的定义：没有互相引用。
+这里调用了一下原函数，算不算互相引用呢？ 只有执行时才引用，没有执行的时候没有引用，而且函数调用的堆栈不一样。很难明确算不算互相引用。
+再回到深拷贝的定义，深拷贝不是一种术语，而是程序员们都认同的方法，这样写也没问题。</p>
+<p>函数由环境和参数决定。环境无法更改，在定义时已经决定。参数是this、传递的参数。使用<code>...arguments</code> 传递。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>) {
+  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Object) {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object()
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Array) {
+      <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array()
+    }
+    <span style="color:#75715e">/****************************/</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Function) {
+      <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, ...<span style="color:#a6e22e">arguments</span>)
+      }
+    }
+    <span style="color:#75715e">/****************************/</span>
+    <span style="color:#75715e">// 使用for in 遍历对象上所有数据
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">source</span>) {
+      <span style="color:#a6e22e">dist</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>[<span style="color:#a6e22e">key</span>]) 
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dist</span>
+  }
+  <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>
+}
+</code></pre></div><h5 id="heading-11">这种方式的缺点</h5>
+<h6 id="-">使用了递归: 环引用</h6>
+<p>递归：必须有一个结尾，目前的对象都有一个末尾。如果对象是一个环呢？</p>
+<p>window 就是一个环引用 window.self = window</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> {<span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;cat&#39;</span>}
+  <span style="color:#a6e22e">a</span>.<span style="color:#a6e22e">self</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>
+<span style="color:#75715e">// 不能写成
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">name</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#a6e22e">self</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">a</span> }
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">* 因为会先解析右侧，self 为 undefined
+</span><span style="color:#75715e">*/</span>
+</code></pre></div><p>解决方法：使用Map设置缓存，已经深拷贝过的数据直接去缓存中寻找。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DeepClone</span> {
+  <span style="color:#75715e">/****************************/</span>
+  <span style="color:#a6e22e">constructor</span>() {
+    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cache</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>()
+  }
+  <span style="color:#a6e22e">clone</span> (<span style="color:#a6e22e">source</span>) {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Object) {
+        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">cacheCurrent</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">get</span>(<span style="color:#a6e22e">source</span>)
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">cacheCurrent</span>) {
+            <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">cacheCurrent</span>
+        }
+    <span style="color:#75715e">/****************************/</span>
+        <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object()
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Array) {
+          <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array()
+        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Function) {
+          <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+              <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, ...<span style="color:#a6e22e">arguments</span>)
+          }
+        }
+  <span style="color:#75715e">/****************************/</span>
+        <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">cache</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">source</span>, <span style="color:#a6e22e">dist</span>)
+  <span style="color:#75715e">/****************************/</span>
+        <span style="color:#75715e">// 使用for in 遍历对象上所有数据
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">key</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">source</span>) {
+          <span style="color:#a6e22e">dist</span>[<span style="color:#a6e22e">key</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">source</span>[<span style="color:#a6e22e">key</span>]) 
+        }
+      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">dist</span>
+    }
+    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>
+  }
+}
+</code></pre></div><h6 id="heading-12">环引用的爆栈问题</h6>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">child</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span> }
+<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">a</span>
+<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#a6e22e">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">20000</span>; <span style="color:#a6e22e">i</span><span style="color:#f92672">++</span>) {
+    <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">child</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">child</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span> }
+    <span style="color:#a6e22e">b</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">b</span>.<span style="color:#a6e22e">child</span>
+}
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">a2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DeepClone</span>().<span style="color:#a6e22e">clone</span>(<span style="color:#a6e22e">a</span>)
+</code></pre></div><p>一共有2w次引用，不可能存入chrome。Chrome的堆栈大概有1.2w左右。
+会产生堆栈溢出。</p>
+<p>解决办法：把结构进行改造，把递归变成循环。每进入一个对象，不去复制，把对象放入数组中，把子元素放入数组的后面。</p>
+<h4 id="regexpdate">拷贝RegExp、Date</h4>
+<p>使用<code>new RegExp(source)</code> <code>new Date(source)</code> 进行拷贝</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-js" data-lang="js"><span style="color:#a6e22e">clone</span> (<span style="color:#a6e22e">source</span>) {
+  <span style="color:#75715e">// ...
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Object) {
+    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Object()
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Array) {
+      <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Array()
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Function) {
+      <span style="color:#a6e22e">dist</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span> () {
+        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">source</span>.<span style="color:#a6e22e">call</span>(<span style="color:#66d9ef">this</span>, ...<span style="color:#a6e22e">arguments</span>)
+      }
+    }
+    <span style="color:#75715e">/************************************/</span>
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> RegExp) {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> RegExp(<span style="color:#a6e22e">source</span>)
+    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">source</span> <span style="color:#66d9ef">instanceof</span> Date) {
+      <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> Date(<span style="color:#a6e22e">source</span>)
+    }
+    <span style="color:#75715e">/************************************/</span>
+  <span style="color:#75715e">//  ...
+</span><span style="color:#75715e"></span>}
+</code></pre></div><h3 id="class">为什么使用class？</h3>
+<p>每次new一个deepClone，会得到新的空数组cache。
+不然旧的cache会一直保留在内存中。</p>
+<h3 id="heading-13">自己实现的优缺点</h3>
+<p>优点</p>
+<ul>
+<li>加深对js对象基础的理解
+缺点</li>
+<li>如果类型超出以上4个范围，比如 Buffer、Map</li>
+<li>每个类型需要单独加一个if else</li>
+</ul>
+<h3 id="immutable">immutable简介</h3>
+<p>在工作中为什么会用到深拷贝呢？不希望一些数据对象被修改，为什么不禁止他被修改呢？
+因此，有了immutable.js
+参考&lt;Immutable 详解&gt;[<a href="https://zhuanlan.zhihu.com/p/20295971?columnSlug=purerender">https://zhuanlan.zhihu.com/p/20295971?columnSlug=purerender</a>]</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>cxl </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/>https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="https://maricaya.github.io/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="https://maricaya.github.io/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90/" class="prev" rel="prev" title="多线程问题的来源"><i class="iconfont icon-left"></i>&nbsp;多线程问题的来源</a>
+         
+        
+        <a href="https://maricaya.github.io/2020/eventloop%E8%AE%A1%E6%97%B6%E5%99%A8nexttick/" class="next" rel="next" title="EventLoop计时器nextTick">EventLoop计时器nextTick&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="https://maricaya.github.io/">cxl</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
