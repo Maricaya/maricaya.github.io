@@ -1,156 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Mariacaya</title>
-    <link>https://maricaya.github.io/posts/</link>
-    <description>Recent content in Posts on Mariacaya</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>zh-Hans</language>
-    <lastBuildDate>Thu, 16 Jan 2020 16:40:59 +0800</lastBuildDate>
-    
-	<atom:link href="https://maricaya.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>二叉树常见面试题</title>
-      <link>https://maricaya.github.io/2020/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AE%80%E4%BB%8B/</link>
-      <pubDate>Thu, 16 Jan 2020 16:40:59 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%AE%80%E4%BB%8B/</guid>
-      <description>扁平结构变成树 请改成树形结构，子节点用children数组表示。 注意，即使打乱数组的顺序，你的程序也能正常工作。
-const array = [{ id: 9, name: &amp;#34;前端基础设施组&amp;#34;, parent: 8 },{ id: 10, name: &amp;#34;前端业务组&amp;#34;, parent: 8 },{ id: 7, name: &amp;#34;后端开发部门&amp;#34;, parent: 5 },{ id: 8, name: &amp;#34;前端开发部门&amp;#34;, parent: 5 },{ id: 1, name: &amp;#34;CEO&amp;#34;, parent: null },{ id: 2, name: &amp;#34;运营部&amp;#34;, parent: 1 },{ id: 3, name: &amp;#34;财务部&amp;#34;, parent: 1 },{ id: 4, name: &amp;#34;人事部&amp;#34;, parent: 1 },{ id: 5, name: &amp;#34;技术部&amp;#34;, parent: 1 },{ id: 6, name: &amp;#34;产品部&amp;#34;, parent: 1 }]解答：</description>
-    </item>
-    
-    <item>
-      <title>Js函数全解</title>
-      <link>https://maricaya.github.io/2020/js%E5%87%BD%E6%95%B0%E5%85%A8%E8%A7%A3/</link>
-      <pubDate>Tue, 14 Jan 2020 17:01:00 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/js%E5%87%BD%E6%95%B0%E5%85%A8%E8%A7%A3/</guid>
-      <description>函数是什么？ 函数三要素：返回值、
-函数返回值由什么决定？  调用时输入的参数params 定义时的环境env  举个🌰 let x = &amp;#39;x&amp;#39;let a = &amp;#39;1&amp;#39;function f1(x){return x + a};a = &amp;#39;3&amp;#39;{let a = &amp;#39;2&amp;#39;alert(f1(&amp;#39;x&amp;#39;)) // 值为多少}a = &amp;#39;4&amp;#39;结果为：a3 说明：a是定义时的a，而不是执行时的a
-另一个🌰
-let x = &amp;#39;x&amp;#39;let a = &amp;#39;1&amp;#39;function f1(c){c()};{let a = &amp;#39;2&amp;#39;function f2(){console.log(x + a)}f1(f2)}结果为：a2 说明：a是定义时的a，而不是执行时的a
-闭包：函数内部能够访问外部的变量 一个常见考题：</description>
-    </item>
-    
-    <item>
-      <title>实现Promise</title>
-      <link>https://maricaya.github.io/2020/%E5%AE%9E%E7%8E%B0promise/</link>
-      <pubDate>Fri, 10 Jan 2020 09:45:20 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/%E5%AE%9E%E7%8E%B0promise/</guid>
-      <description>手写Promise是前端面试中常考的一道题目，本章将和大家一起完成一个符合Promises/A+标准的Promise方法，希望对你有所帮助。
-Promise 简介  解决什么问题  回调地狱   如何解决的 - how 什么优点（对比其他技术）  减少缩进 消灭if(err)   缺点 如何解决这些缺点  Promises/A+标准 https://promisesaplus.com/
-Promise 的完整API是什么 promise是一个类  js中类是特殊的函数 类属性：length（可忽略） 类方法：all/&amp;hellip; 对象属性: then/finally/catch 对象内部属性: state = pending/fulfilled/rejected  实现promise基本方法 promise是一个类，只接受函数fn，并立即执行该函数 class Promise2 {constructor(fn) {if (typeof fn !== &amp;#34;function&amp;#34;) {throw new Error(&amp;#34;只接受函数&amp;#34;)}fn()}}fn执行的时候接受resolve和reject两个函数 class Promise2 {constructor(fn) {if (typeof fn !== &amp;#34;function&amp;#34;) {throw new Error(&amp;#34;只接受函数&amp;#34;)}/*********************************/fn(() =&amp;gt; {}, () =&amp;gt; {})/*********************************/}}Promise有then方法 promise.</description>
-    </item>
-    
-    <item>
-      <title>Css常见面试题</title>
-      <link>https://maricaya.github.io/2020/css%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</link>
-      <pubDate>Fri, 10 Jan 2020 09:19:31 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/css%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/</guid>
-      <description>css来实现水平垂直居中 移动端页面适配解决方案</description>
-    </item>
-    
-    <item>
-      <title>数组去重和函数柯里化</title>
-      <link>https://maricaya.github.io/2020/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/</link>
-      <pubDate>Fri, 10 Jan 2020 09:18:44 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E5%92%8C%E5%87%BD%E6%95%B0%E6%9F%AF%E9%87%8C%E5%8C%96/</guid>
-      <description>&amp;lt;JavaScript专题之数组去重&amp;gt;[https://juejin.im/post/5949d85f61ff4b006c0de98b]
-/** @params array：表示要去重的数组，必填* @params isSorted：表示函数传入的数组是否已排过序，如果为 true，将会采用更快的方法进行去重* @params iteratee：传入一个函数，可以对每个元素进行重新的计算，然后根据处理的结果进行去重至此，我们已经仿照着 underscore 的思路写了一个 unique 函数*/var array3 = [1, 1, &amp;#39;a&amp;#39;, &amp;#39;A&amp;#39;, 2, 2];// 第二版// iteratee 英文释义：迭代 重复function unique(array, isSorted, iteratee) {var res = [];var seen = [];for (var i = 0, len = array.length; i &amp;lt; len; i++) {var value = array[i];var computed = iteratee ? iteratee(value, i, array) : value;if (isSorted) {if (!</description>
-    </item>
-    
-    <item>
-      <title>EventLoop计时器nextTick</title>
-      <link>https://maricaya.github.io/2020/eventloop%E8%AE%A1%E6%97%B6%E5%99%A8nexttick/</link>
-      <pubDate>Thu, 09 Jan 2020 20:17:00 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/eventloop%E8%AE%A1%E6%97%B6%E5%99%A8nexttick/</guid>
-      <description>node 的event Loop chrome
-timer 执行 setTimeout 和 setInterval 的回调函数 poll 获取新的 I/O 事件。在某些场景下 Node.js 会阻塞在这个阶段。 check 执行 setImmediate() 的回调函数。
-setImmediate 的主要优势就是，如果在 I/O 操作的回调里，setImmediate 的回调总是比setTimeout 的回调先执行。（译者注：怎么总是把一个道理翻来覆去地说） process.nextTick() 当前阶段的后面
-###总结
- Chrome  宏任务 马上（MarcoTask) 微任务 一会（MicroTask）   Node  setTimeOut timers setImmediate check nextTick 当前后面  primise.then(fn) resolve()时，fn放入当前队列后面执行 async await 转换为then      从一道面试题说 event loop
-(function () {setTimeout(() =&amp;gt; {console.log(0)})new Promise(resolve =&amp;gt; {console.</description>
-    </item>
-    
-    <item>
-      <title>深拷贝</title>
-      <link>https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</link>
-      <pubDate>Thu, 09 Jan 2020 11:00:44 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</guid>
-      <description>深拷贝是面试常考的知识点，也经常容易出错，下面来看看我的答题思路吧。 参考loadsh[https://github.com/lodash/lodash/blob/master/.internal/baseClone.js]
-什么是深拷贝 理解一：
- 假设b是a的一份拷贝，并且b中没有对a对象的引用。 理解二： b是a的一份拷贝。 把a和b画出图，a与b之间没有连接。  询问 在做任何与算法、需求相关时，都要问这几个问题：
- 询问数据类型  拷贝的数据中有什么？   询问数据规模  10？ 10w？ 10w个嵌套？   性能要求  对时间、空间、速度要求   运行环境  IE6？Chrome?   其他要求  有没有其他内容？   开始写  开始写 最简单的方法 JSON序列化反序列化 let obj = {a: 1,b: [1, 2, 3],c: {d1: &amp;#39;ddd&amp;#39;, d2: &amp;#39;ccc&amp;#39;}}let obj1 = JSON.parse(JSON.stringify(a))obj1.a = 2console.log(obj.a)这个方法的缺点是什么？</description>
-    </item>
-    
-    <item>
-      <title>多线程问题的来源</title>
-      <link>https://maricaya.github.io/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90/</link>
-      <pubDate>Fri, 03 Jan 2020 10:07:15 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2020/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%97%AE%E9%A2%98%E7%9A%84%E6%9D%A5%E6%BA%90/</guid>
-      <description>多线程问题是Java面试中常考问题，一定要熟练掌握它。
-相关概念 进程 Process 进程是程序的一次执行过程，系统进行资源分配和调度的基本单位，是操作系统结构的基础，进程是线程的容器。 进程是资源分配的最小单位。我们启动一个服务、运行一个实例，就是开一个服务进程，例如 Java 里的 JVM 本身就是一个进程。
-是线程 线程与进程相似，但线程是一个比进程更小的执行单位。 一个进程在其执行的过程中可以产生多个线程。与进程不同的是同类的多个线程共享同一块内存空间和一组系统资源，所以系统在产生一个线程，或是在各个线程之间作切换工作时，负担要比进程小得多，也正因为如此，线程也被称为轻量级进程。
-线程和进程的不同  线程是进程划分成的更小的运行单位。线程和进程最大的不同在于基本上各进程是独立的，而各线程则不一定，因为同一进程中的线程极有可能会相互影响。 从另一角度来说，进程属于操作系统的范畴，主要是同一段时间内，可以同时执行一个以上的程序，而线程则是在同一程序内几乎同时执行一个以上的程序段。  什么是多线程？为什么需要多线程？ 多线程？ 多线程就是几乎同时执行多个线程。 （一个CPU在某一个时间点上永远都只能是一个线程！即使这个CPU是多核的，除非有多个CPU才能实现多个线程同时运行。） 几乎同时是因为多个线程是一个线程执行一会然后其他的线程再执行，并不是同时执行。
-为什么需要多线程？  现代CPU执行速度是非常快的 但是Java默认只有一个线程 而且Java的执行模型是同步、阻塞的 当你在进行一个非常耗时的操作时，当前线程执行流会停在这里，等着方法执行完成。 而在实际生产中，如果用户同时请求一个命令，后来的用户就需要等前面的执行完后，才得到结果。 那么，我们能不能多请几个人来处理这些命令，让这些用户可以同时得到结果？ 使用多线程。 还有一点，现代的CPU都是多核的，理论上具有天然的并发能力   Java的执行模型是同步、阻塞的 什么是同步、阻塞？来看这段代码  public static void main(String[] args) throws InterruptedException {a();System.out.println(1);}private static void a() throws InterruptedException {Thread.sleep(100);b();}private static void b() throws InterruptedException {Thread.sleep(1000);}1100s后才会打印出1。 当你在进行一个非常耗时的操作时，当前线程执行流会停在这里，等着方法执行完成。 这个过程称为阻塞（block）。</description>
-    </item>
-    
-    <item>
-      <title>ArrayList的扩容机制(jdk8)</title>
-      <link>https://maricaya.github.io/2019/arraylist%E6%89%A9%E5%AE%B9/</link>
-      <pubDate>Mon, 16 Dec 2019 17:00:30 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2019/arraylist%E6%89%A9%E5%AE%B9/</guid>
-      <description>想了解ArrayList的动态扩容机制，最好的方式是阅读源码。
-ArrayList的构造方法 - 有初始容量 初始容量 &amp;gt; 0时，elementData初始化为initialCapacity大小的数组。
-/*** 构造具有指定初始容量的空列表 list。** @param initialCapacity list的初始容量* @throws IllegalArgumentException 如果初始容量为负*/public ArrayList(int initialCapacity) {if (initialCapacity &amp;gt; 0) {this.elementData = new Object[initialCapacity];} else if (initialCapacity == 0) {this.elementData = EMPTY_ELEMENTDATA;} else {throw new IllegalArgumentException(&amp;#34;Illegal Capacity: &amp;#34;+ initialCapacity);}}}ArrayList的扩容机制 - add()内部实现 add方法 /*** 将 指定元素 加入list末尾* @param e 将被加入list的元素* @return &amp;lt;tt&amp;gt;true&amp;lt;/tt&amp;gt; (as specified by {@link Collection#add})*/public boolean add(E e) {// 确保有足够的空间 // 在添加元素前进行判断，如果空间不够就扩容 ensureCapacityInternal(size + 1); // Increments modCount!</description>
-    </item>
-    
-    <item>
-      <title>java包管理的前生今世--Maven入门</title>
-      <link>https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/</link>
-      <pubDate>Mon, 16 Dec 2019 14:55:11 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2019/maven%E5%85%A5%E9%97%A8/</guid>
-      <description>Maven是Java的包管理工具，类似于JavaScript的npm。Maven已经有十多年的历史，至今仍然被Java程序员广泛使用。要了解Maven，先了解最基本的概念。什么是包？
-什么是包？ JVM被设计的相当简单：1.执行一个类的字节码 2.假如这个过程中碰到了新的类，加载 -&amp;gt; 1.2&amp;hellip;一直循环执行
-那么，去哪里加载新的类呢？ 类似命令行中执行程序是从环境变量中找到的，新的类是通过类路径（classpath）挨个去找的。 如果碰到jar包（jar包的本质就是zip压缩包，将jar改为zip后解压缩，可以看到一堆java类），就将jar包解压缩后寻找。
-包，就是把许多类放在一起，压缩为jar包。
--classpath/-cp什么是包管理？ 在我们写的项目中，会使用的一些第三方类，这些第三方类都需要我们来告诉JVM从哪里找到。手动在命令行中写非常麻烦，包管理就是来帮我们解决这个麻烦的过程。
-包管理的本质就是，告诉JVM从哪里找需要的第三方类。以及成功的解决其中的冲突问题。
-冲突问题 即你依赖的类还依赖了其他类。程序庞大的情况下，依赖可能非常多。在真实的项目中，可能依赖成百上千个jar包。如果使用命令行的方式一个一个传递，会导致效率十分低下。
-这就是使用自动化工具的原因：帮我们完成重复、啰嗦的事情。
-我们知道，类的唯一表示就是全限定类名。全限定类名是用来在jar包中，根据目录来定位文件的。如果依赖的两个包，分别依赖同一个同名文件，但是是不同的版本。那应该选择哪个版本呢？
-答案很简单：谁在前面，就用谁。
-在不同的版本中，代码是不同的，因此可能会出现bug。这就是Classpath hell 类路径地狱。所以，绝对不允许最终的classpath出现同名不同版本的jar包。
-对于传递性依赖的自动管理问题，最早的解决方法是：每次上线前都看一下，确定没有同名类。但是Classpath很长，肉眼很难看出问题。Maven的出现，帮我们很好解决了这个问题。
-在没有包管理工具的时代 java程序员是手动写命令行进行程序的编译、运行。
-依赖的所有jar包都需要手动下载，并且手动写上classpath。
-# 编译 需要手动下载commons-lang3-3.9.jar 和lang3依赖的jar包javac -cp commons-lang3-3.9.jar StringIsBlank.java# 运行java -cp commons-lang3-3.9.jar:. StringIsBlank.java 传递参数Apache Ant时代 手动下载jar包。并写xml配置，指定编译的源代码目录、依赖的jar包、输入目录等。
-Ant时代已经节省了很多工作，但也有他的不足。
- 每个人都要造轮子。  因为每个人的目录名称不同，并不通用。   依赖的第三方类库都需要手动下载。 没有解决classpath hell问题。  Maven 划时代的包管理 首先要强调，Maven不仅仅是包管理工具。
- Maven为仓库提供了一套约定，可以复用其他人的代码。约定优于配置。  不用手动去下载包，只要配置组织、名称、版本号。Maven会自动下载依赖的包。   Maven有两个仓库：中央仓库、本地仓库(默认~/.m2) 下载的第三方包，放入m2进行缓存。 Maven就像一个大书库，根据书的分类去找到下载的第三方包。  Maven的包  按照约定为所有包编号，方便检索  groupId artifactId version    Maven中包冲突解决  报出如下的异常时，大部分是包冲突的表现：  AbstractMethodError NoClassDefFoundError ClassNotFoundException LinkageError    当包冲突时，Maven会选择哪个版本的包呢？答案和上面的相同：谁离项目近（在前面），就用谁。 如果我们想使用后面版本的包，如何修改？ 查看Maven中引用结构：</description>
-    </item>
-    
-    <item>
-      <title>使用Hugo创建个人博客</title>
-      <link>https://maricaya.github.io/2019/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Sat, 14 Dec 2019 18:55:11 +0800</pubDate>
-      
-      <guid>https://maricaya.github.io/2019/%E4%BD%BF%E7%94%A8hugo%E5%88%9B%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
-      <description>使用Hugo搭建个人博客 一、下载Hugo Mac  Mac下直接使用Homebrew安装即可(需要命令行科学上网)  brew install hugo 如果没有配置科学上网,可以去Hugo releases下载 查看是否安装成功  hugo version# 输出版本即为下载成功Windows  下载  去Hugo releases下载   解压  后将hugo.exe放入你喜欢的目录中，比如D:\Software\hugo   配置环境变量  将hugo.exe所在文件夹添加到PATH。即D:\Software\hugo    安装时的问题 运行Hugo,powershell自动关闭  排查发现是电脑管家自动阻止了Hugo命令的运行,重启电脑就好啦   二、创建一个 new Site 在任意一个目录下创建即可
-官方推荐 hugo new site quickstart使用github pages搭建 将new site名称改为xxx.github.io-creater，xxx 是你的github名称。注意将大写字母改为小写。 比如：Maricaya.github.io改为maricaya.github.io
-hugo new site xxx.github.io-creater三、添加一个主题 可以在themes.gohugo.io中找到你喜欢的主题,我使用了Ananke theme
-# 切换目录cd xxx.github.io-creater# 初始化git initgit submodule add https://github.</description>
-    </item>
-    
-  </channel>
-</rss>
