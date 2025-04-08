@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://maricaya.github.io/sitemap.xml
