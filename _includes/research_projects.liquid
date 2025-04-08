@@ -1,0 +1,25 @@
+{% if site.data.research_projects %}
+<div class="research-projects">
+  {{ site.data.research_projects.content }}
+</div>
+{% else %}
+<div class="research-projects">
+  <div class="project-item">
+    <h2 id="differential-analysis-in-scientific-computing">Differential Analysis in Scientific Computing</h2>
+    <div class="project-content">
+      <p>My research explores reproducibility and trace-based debugging in distributed systems. I am a co-author of the paper "Accurate Differential Analysis using Record and Selective Replay" (SSDBM 2025), led by Yuta Nakamura. This work addresses the challenge of comparing execution traces in parallel MPI applications, where tasks may exchange messages in a non-deterministic order.</p>
+
+      <p>Our approach uses selective replay to reduce false positives by more than 50% when comparing execution runs, enabling more precise identification of divergence points in scientific applications. I contributed to the experimental design and evaluation of this method on real-world MPI benchmarks.</p>
+    </div>
+  </div>
+
+  <div class="project-item">
+    <h2 id="related-projects">Related Projects</h2>
+    <div class="project-content">
+      <p>I have been introduced to the <a href="https://floability.github.io/">Floability Project</a>, an NSF-funded research initiative led by Professor Tanu Malik. This project aims to enable the rapid and portable deployment of notebooks expressing complex scientific workflows across various cyberinfrastructure by addressing workflow incompleteness through capturing software dependencies, required datasets, and cluster hardware capabilities.</p>
+
+      <p>The Floability Project is a collaborative effort between the University of Notre Dame, the University of Missouri, and the University of Illinois, leveraging technologies like Jupyter, Sciunit, TaskVine, and Conda Forge.</p>
+    </div>
+  </div>
+</div>
+{% endif %}

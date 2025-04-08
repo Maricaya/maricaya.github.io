@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Xulu Chu's Academic Website
+title: Xulu Chu
 first_name: Xulu
 middle_name:
 last_name: Chu
@@ -264,29 +264,21 @@ display_categories: ["external-services"] # these categories will be displayed o
 # -----------------------------------------------------------------------------
 
 scholar:
-  last_name: [Einstein]
-  first_name: [Albert, A.]
-
+  last_name: Chu
+  first_name: Xulu
   style: apa
   locale: en
-
-  source: /_bibliography/
+  sort_by: year,month
+  order: descending
+  source: _bibliography
   bibliography: papers.bib
   bibliography_template: bib
-  # Note: if you have latex math in your bibtex, the latex filter
-  # preprocessing may conflict with MathJAX if the latter is enabled.
-  # See https://github.com/alshedivat/al-folio/issues/357.
-  bibtex_filters: [latex, smallcaps, superscript]
-
   replace_strings: true
   join_strings: true
-
   details_dir: bibliography
+  details_layout: bibtex.liquid
   details_link: Details
-
   query: "@*"
-  group_by: year
-  group_order: descending
 
 # Display different badges withs stats for your publications
 # Customize badge behavior in _layouts/bib.liquid

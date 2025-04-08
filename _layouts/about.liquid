@@ -40,6 +40,22 @@ layout: default
 
     <div class="clearfix">{{ content }}</div>
 
+    <!-- Selected papers -->
+    {% if page.selected_papers %}
+      <h2>
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Publication</a>
+      </h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
+
+    <!-- Research Projects -->
+    {% if page.research_projects %}
+      <h2>
+        <a href="{{ '/research/' | relative_url }}" style="color: inherit">Research</a>
+      </h2>
+      {% include research_projects.liquid %}
+    {% endif %}
+
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
       <h2>
@@ -54,14 +70,6 @@ layout: default
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
       </h2>
       {% include latest_posts.liquid %}
-    {% endif %}
-
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">selected publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
     {% endif %}
 
     <!-- Social -->
