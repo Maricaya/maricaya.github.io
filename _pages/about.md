@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Master's Student at DePaul University, advised by <a href='https://tanumalik.github.io/'>Professor Tanu Malik</a> (now at University of Missouri).Before focusing on my academic pursuits, I worked as a Software Engineer at ByteDance and iFlyTek for 5 years, where I gained valuable industry experience in developing applications and systems for AI-driven platforms.
+subtitle:
 
 profile:
   align: right
@@ -29,35 +29,24 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a Master's student in Computer Science at DePaul University, working with Professor Tanu Malik at the [DICE Lab](https://dice.cs.depaul.edu). My research interests span across:
+Hi there! I am a Master's student(2024/04-2026/04) in Computer Science at DePaul University, working with Professor Tanu Malik at the <a href="https://dice.cs.depaul.edu" rel="external nofollow noopener" target="_blank">DICE Lab.
 
-**Primary Research Areas:**
-- Databases and Data Management
-- High Performance Computing
-- AI for Scientific Computing
-- Systems Development
+My research focuses on <strong>Program Analysis</strong>, <strong>Data Provenance</strong>, and <strong>Web Security</strong>. Specifically, I want to solve web security issues through both static and dynamic program analysis methods.
 
-**Specific Research Focus:**
-- Big Data Systems for Scientific Computing
-- Data Provenance and Reproducibility
-- Scientific Data Management
+Before DePaul, I worked as a Software Engineer at ByteDance and iFlyTek for 5 years, where I gained valuable industry experience in web development and systems.
 
-**I am planning to apply for PhD programs in Computer Science this year, with a focus on advancing research in scientific data management and reproducible computing.**
 
-<!-- ## Education
-
-**Master of Science in Computer Science** (2024/04-2026/04)
-<br>
-Jarvis College of Computing and Digital Media, DePaul University
-<br>
-Computer Science
-
-**Bachelor in Engineering** (2015/09-2019/06)
-<br>
-College of Mechanical and Material Engineering, North China University of Technology
-<br>
-Mechanical Design, Manufacturing & Automation -->
+**I am planning to apply for PhD programs in Computer Science this year, with a focus on advancing research in scientific program analysis and web security.** You can find my CV [here](link-to-your-cv) and reach me at [chuxulu.volary@gmail.com](mailto:chuxulu.volary@gmail.com).
 
 In my free time, I enjoy running🏃‍♀️.
 
-<!-- You can find my CV [here](link-to-your-cv) and reach me at [chuxulu.volary@gmail.com](mailto:chuxulu.volary@gmail.com). -->
+## Experience
+
+**Research Assistant**, DePaul University (2024 Apr. - Present)
+<br>
+Advisor: Prof. Tanu Malik
+
+**Software Engineer**, ByteDance (2020 Dec. - 2023 Dec.)
+<br>
+
+**Software Engineer**, iFlyTek (2019 Jun. - 2020 Nov.)

@@ -56,7 +56,6 @@
             </a>
           </li>
 
-          {% comment %}
           <!-- Other pages -->
           {% assign sorted_pages = site.pages | sort: 'nav_order' %}
           {% for p in sorted_pages %}
@@ -126,7 +125,6 @@
               </button>
             </li>
           {% endif %}
-          {% endcomment %}
 
           {% if site.enable_darkmode %}
             <!-- Toogle theme mode -->

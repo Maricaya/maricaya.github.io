@@ -17,7 +17,7 @@
   
   
     
-      Research Projects | Xulu Chu
+      research | Xulu Chu
     
   
 </title>
@@ -112,6 +112,160 @@
             </a>
           </li>
 
+          <!-- Other pages -->
+          
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item ">
+                  <a class="nav-link" href="/publications/">publications
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+              
+                
+                <li class="nav-item active">
+                  <a class="nav-link" href="/research/">research
+                    
+                      <span class="sr-only">(current)</span>
+                    
+                  </a>
+                </li>
+              
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+          
+            <!-- Search -->
+            <li class="nav-item">
+              <button id="search-toggle" title="Search" onclick="openSearchModal()">
+                <span class="nav-link">ctrl k <i class="ti ti-search"></i></span>
+              </button>
+            </li>
           
 
           
@@ -146,20 +300,41 @@
 
 <div class="post">
   <header class="post-header">
-    <h1 class="post-title">Research Projects</h1>
+    <h1 class="post-title">research</h1>
     <p class="post-description">My research work and involvement</p>
   </header>
 
   <article>
-    <h2 id="differential-analysis-in-scientific-computing">Differential Analysis in Scientific Computing</h2>
+    <h2 id="academia-research-experiences">Academia Research Experiences</h2>
 
-<p>My research explores reproducibility and trace-based debugging in distributed systems. I am a co-author of the paper “Accurate Differential Analysis using Record and Selective Replay” (SSDBM 2025), led by Yuta Nakamura. This work addresses the challenge of comparing execution traces in parallel MPI applications, where tasks may exchange messages in a non-deterministic order. Our approach uses selective replay to reduce false positives by more than 50% when comparing execution runs, enabling more precise identification of divergence points in scientific applications. I contributed to the experimental design and evaluation of this method on real-world MPI benchmarks.</p>
+<h3 id="depaul-university-dice-lab-advisor-professor-tanu-malik">DePaul University DICE Lab (Advisor: Professor Tanu Malik)</h3>
 
-<h2 id="related-projects">Related Projects</h2>
+<h4 id="minimum-path-recovery-set-mprs-for-trace-differencing-jan-2024--present">Minimum Path Recovery Set (mPRS) for Trace Differencing (Jan 2024 – Present)</h4>
+<ul>
+  <li>Contributed to the mPRS algorithm that stores only the trace events strictly needed to reconstruct any execution path, formalising the problem, proving NP-hardness, and providing a fast heuristic plus an exact ILP solver</li>
+  <li>Implemented mPRS as an LLVM pass; on 9 GNU Coreutils programs it instruments ≈ 62% fewer basic blocks and ≈ 82% fewer function calls than full tracing while keeping recovery loss-free</li>
+  <li>Integrated mPRS into the SPADE provenance system, cutting emitted provenance events and speeding up differential-trace analysis without loss of accuracy</li>
+</ul>
 
-<p>I have been introduced to the <a href="https://floability.github.io/" rel="external nofollow noopener" target="_blank">Floability Project</a>, an NSF-funded research initiative led by Professor Tanu Malik. This project aims to enable the rapid and portable deployment of notebooks expressing complex scientific workflows across various cyberinfrastructure by addressing workflow incompleteness through capturing software dependencies, required datasets, and cluster hardware capabilities.</p>
+<h4 id="accurate-differential-analysis-using-record-and-selective-replay-apr-2024--mar-2025">Accurate Differential Analysis using Record and Selective Replay (Apr 2024 – Mar 2025)</h4>
+<ul>
+  <li>Co-developed SelTraceReplay, a selective record-and-replay framework that aligns two distributed runs at runtime and extracts precise trace-level provenance</li>
+  <li>Introduced loop-aware path IDs and dynamic message-ordering normalization to tame nondeterminism in MPI/HPC programs</li>
+  <li>Improved divergence-localization accuracy by 30% over ReMPI while shrinking log size 20×; accepted at SSDBM ‘25 (second author)</li>
+</ul>
 
-<p>The Floability Project is a collaborative effort between the University of Notre Dame, the University of Missouri, and the University of Illinois, leveraging technologies like Jupyter, Sciunit, TaskVine, and Conda Forge.</p>
+<h4 id="ai-assisted-debugging-with-trace-enhanced-prompts-poster-jan-2025--apr-2025">AI-Assisted Debugging with Trace-Enhanced Prompts (Poster) (Jan 2025 – Apr 2025)</h4>
+<ul>
+  <li>Designed a workflow that feeds SelTraceReplay trace differences into LLM prompts to boost bug-localization suggestions</li>
+  <li>In experiments with ChatGPT-4o, Gemini 1.5 Pro, and Claude 3.5 on four HPC benchmarks, trace-enhanced prompts raised the Jaccard similarity of predicted divergence points from 0.42 to 0.55 (+31%)</li>
+</ul>
+
+<h4 id="parallel-audit-and-reproduction-of-dag-workflows-apr-2024--aug-2024">Parallel Audit and Reproduction of DAG Workflows (Apr 2024 – Aug 2024)</h4>
+<ul>
+  <li>Supported research on improving reproducibility in Sciunit through parallel auditing and repeating DAG workflows</li>
+  <li>Set up and ran experiments to test Sciunit’s performance in parallel auditing and workflow reproduction</li>
+  <li>Collected data on system calls and dependencies to enhance audit accuracy and workflow efficiency</li>
+</ul>
 
   </article>
 
