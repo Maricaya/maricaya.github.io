@@ -36,7 +36,7 @@ My research focuses on <strong>Program Analysis</strong>, <strong>Data Provenanc
 Before DePaul, I worked as a Software Engineer at ByteDance and iFlyTek for 5 years, where I gained valuable industry experience in web development and systems.
 
 
-**I am planning to apply for PhD programs in Computer Science this year, with a focus on advancing research in scientific program analysis and web security.** You can find my CV [here]([link-to-your-cv](https://drive.google.com/file/d/1dtw8ulGy0v6_LJ5vZL64WEFqDHXMXRIO/view?usp=sharing)) and reach me at [chuxulu.volary@gmail.com](mailto:chuxulu.volary@gmail.com).
+**I am planning to apply for PhD programs in Computer Science this year, with a focus on advancing research in scientific program analysis and web security.** You can find my CV [here](https://drive.google.com/file/d/1dtw8ulGy0v6_LJ5vZL64WEFqDHXMXRIO/view?usp=sharing) and reach me at [chuxulu.volary@gmail.com](mailto:chuxulu.volary@gmail.com).
 
 In my free time, I enjoy running🏃‍♀️.
 
